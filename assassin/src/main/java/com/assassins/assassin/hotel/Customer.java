@@ -9,9 +9,18 @@ import javax.persistence.Table;
 public class Customer {
     @Id
     private String email;
+    private String name;
     private String password;
 
     public Customer() {
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     public String getEmail() {
@@ -34,12 +43,14 @@ public class Customer {
     public String toString() {
         return "Customer{" +
                 "email='" + email + '\'' +
+                ", name='" + name + '\'' +
                 ", password='" + password + '\'' +
                 '}';
     }
 
-    public Customer(String email, String password) {
+    public Customer(String email, String name, String password) {
         this.email = email;
+        this.name = name;
         this.password = password;
     }
 }

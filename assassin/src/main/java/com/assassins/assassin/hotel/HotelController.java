@@ -20,7 +20,7 @@ public class HotelController {
         return hotelService.hello();
     }
 
-    @PostMapping
+    @RequestMapping(value = "/register", method = RequestMethod.POST)
     public void registerCustomer(@RequestBody Customer customer) {
         hotelService.register(customer);
     }

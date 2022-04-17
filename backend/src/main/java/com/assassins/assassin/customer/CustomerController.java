@@ -26,4 +26,9 @@ public class CustomerController {
     public void registerCustomer(@RequestBody Customer customer) throws NoSuchAlgorithmException {
         customerService.register(customer);
     }
+
+    @RequestMapping(value = "/login", method = RequestMethod.POST)
+    public void loginCustomer(@RequestBody Customer customer) throws NoSuchAlgorithmException {
+        customerService.login(customer);
+    }
 }

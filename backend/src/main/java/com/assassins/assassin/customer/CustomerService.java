@@ -7,7 +7,6 @@ import org.springframework.stereotype.Service;
 
 import java.security.NoSuchAlgorithmException;
 import java.util.List;
-import java.util.Optional;
 
 @Service
 public class CustomerService {
@@ -19,23 +18,30 @@ public class CustomerService {
         this.customerRepository = customerRepository;
     }
 
-//    CustomerService() {
-//        sha512Hasher = new SHA512Hasher();
-//    }
-
     public List<Customer> hello() {
         return customerRepository.findAll();
     }
 
     public void register(Customer customer) throws NoSuchAlgorithmException {
-        Optional<Customer> customerByEmail =  customerRepository.findCustomerByEmail(customer.getEmail());
-        if(customerByEmail.isPresent()) throw new IllegalStateException("email taken");
+        List<Customer> customerByEmail =  customerRepository.findCustomerByEmail(customer.getEmail());
+        if(customerByEmail.size() != 0) throw new IllegalStateException("email taken");
         else {
             System.out.println(customer.getPassword());
             String securePassword = sha512Hasher.hash(customer.getPassword());
             System.out.println(securePassword);
             customer.setPassword(securePassword);
             customerRepository.save(customer);
+        }
+    }
+
+    public String login(Customer customer) {
+        System.out.println(customer.getEmail() + customer.getName() + customer.getPassword());
+        List<Customer> customerByEmail =  customerRepository.findCustomerByEmail(customer.getEmail());
+        System.out.println(customerByEmail.size());
+        if(customerByEmail.size() == 0) throw new IllegalStateException("email taken");
+        else {
+            if(sha512Hasher.checkPassword(customerByEmail.get(0).getPassword(), customer.getPassword())) return customerByEmail.get(0).getEmail();
+            else throw new IllegalStateException("invalid password");
         }
     }
 }

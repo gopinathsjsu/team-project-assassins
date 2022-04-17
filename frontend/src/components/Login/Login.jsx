@@ -1,4 +1,4 @@
-// import backendServer from '../../webconfig';
+import backendServer from '../../webconfig';
 import React, { useState } from 'react';
 import { useHistory } from "react-router";
 import logo from "../../images/logo.png";
@@ -22,23 +22,23 @@ const Login = () => {
   }
 
   const checkLogin = async (e) => {
-    // e.preventDefault();
-    // let res = await fetch(`${backendServer}/api/user/login`, {
-    //   method: 'POST',
-    //   headers: {
-    //     'Content-Type': 'application/json'
-    //   },
-    //   mode: 'cors',
-    //   body: JSON.stringify({ emailId, password }),
-    // })
-    // let token = await res.text();
-    // if (res.status === 200) {
-    //   sessionStorage.setItem('token', token);
-    //   history.replace('/');
-    // }
-    // else {
-    //   setErrorMsg('Please enter valid credentials');
-    // }
+    e.preventDefault();
+    let res = await fetch(`${backendServer}/api/customer/login`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      mode: 'cors',
+      body: JSON.stringify({ email: emailId, password }),
+    })
+    let token = await res.text();
+    if (res.status === 200) {
+      sessionStorage.setItem('token', token);
+      history.replace('/');
+    }
+    else {
+      setErrorMsg('Please enter valid credentials');
+    }
   }
 
   return (

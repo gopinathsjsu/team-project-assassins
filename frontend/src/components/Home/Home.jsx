@@ -4,10 +4,11 @@ import React from 'react';
 require("./Home.css")
 
 export default function Home() {
-  return (
+  let token = sessionStorage.getItem('token');
+  if (token === null) return <Redirect to="/login" />;
+  else return (
     <div>
       <p>  hi  </p>
-      <Redirect to="/login" />
     </div>
   );
 }

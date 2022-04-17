@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-// import backendServer from '../../webconfig';
+import backendServer from '../../webconfig';
 import { useHistory } from "react-router";
 import logo from "../../images/logo.png";
 
@@ -8,9 +8,9 @@ require('./SignUp.css');
 function SignUp() {
   const [loginError, setErrorMsg] = useState("");
   const history = useHistory();
-  const [{ name, emailId, password }, setSignupState] = useState({
+  const [{ name, email, password }, setSignupState] = useState({
     name: "",
-    emailId: "",
+    email: "",
     password: ""
   })
 
@@ -18,33 +18,29 @@ function SignUp() {
   const regex = /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
 
   const handleSubmit = async (e) => {
-    // e.preventDefault();
-    // if (!regex.test(emailId)) { setErrorMsg("Enter valid email id") }
-    // else {
-    //   const customer = {
-    //     emailId: emailId,
-    //     name: name,
-    //     password: password
-    //   };
-    //   let res = await fetch(`${backendServer}/api/user/register`, {
-    //     method: 'POST',
-    //     headers: {
-    //       'Content-Type': 'application/json'
-    //     },
-    //     mode: 'cors',
-    //     body: JSON.stringify(customer),
-    //   })
-    //   if (res.status === 200) {
-    //     dispatch(signupAction({
-    //       emailId: emailId,
-    //       username: name
-    //     }))
-    //     history.replace("/login");
-    //   }
-    //   else {
-    //     setErrorMsg("please enter valid credentials for registration")
-    //   }
-    // }
+    e.preventDefault();
+    if (!regex.test(email)) { setErrorMsg("Enter valid email id") }
+    else {
+      const customer = {
+        email: email,
+        name: name,
+        password: password
+      };
+      let res = await fetch(`${backendServer}/api/customer/register`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        mode: 'cors',
+        body: JSON.stringify(customer),
+      })
+      if (res.status === 200) {
+        history.replace("/login");
+      }
+      else {
+        setErrorMsg("please enter valid credentials for registration")
+      }
+    }
   };
 
   const handleEvent = (event) => {
@@ -63,7 +59,7 @@ function SignUp() {
             </div>
             <div className="form-group" style={{ marginTop: '5%' }}>
               <div style={{ textAlign: 'left', fontWeight: 'bolder', padding: '5px' }}><label>Email address : </label></div>
-              <input data-testid = "emailId" onChange={handleEvent} name="emailId" value={emailId} className="form-control" id="email" aria-describedby="emailHelp" placeholder="Enter Email" autoFocus required={true} />
+              <input data-testid = "email" onChange={handleEvent} name="email" value={email} className="form-control" id="email" aria-describedby="emailHelp" placeholder="Enter Email" autoFocus required={true} />
             </div>
             <div className="form-group" style={{ marginTop: '5%' }}>
               <div style={{ textAlign: 'left', fontWeight: 'bolder', padding: '5px' }}><label htmlFor="name">User name : </label></div>

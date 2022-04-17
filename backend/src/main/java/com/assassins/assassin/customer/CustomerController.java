@@ -4,6 +4,7 @@ import com.assassins.assassin.models.Customer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.security.NoSuchAlgorithmException;
 import java.util.List;
 
 @RestController
@@ -22,7 +23,7 @@ public class CustomerController {
     }
 
     @RequestMapping(value = "/register", method = RequestMethod.POST)
-    public void registerCustomer(@RequestBody Customer customer) {
+    public void registerCustomer(@RequestBody Customer customer) throws NoSuchAlgorithmException {
         customerService.register(customer);
     }
 }

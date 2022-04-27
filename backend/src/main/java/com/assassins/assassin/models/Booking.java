@@ -1,19 +1,27 @@
 package com.assassins.assassin.models;
 
-public class Booking {
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
+@Entity
+@Table
+public class Booking {
+    @Id
     private long id;
-    private final String firstName;
-    private final String lastName;
-    private final String creditCard;
-    private final short cvc;
+    private String firstName;
+    private String lastName;
+    private String creditCard;
 
     public Booking(long id, String firstName, String lastName, String creditCard, short cvc) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
         this.creditCard = creditCard;
-        this.cvc = cvc;
+    }
+
+    public Booking() {
+
     }
 
     public long getId() {

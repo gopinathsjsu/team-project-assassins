@@ -1,4 +1,4 @@
-package com.assassins.assassin.models;
+package edu.sjsu.assasins.hotelbooking.models;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;

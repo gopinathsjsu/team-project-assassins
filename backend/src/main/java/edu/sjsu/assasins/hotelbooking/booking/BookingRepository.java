@@ -1,6 +1,6 @@
-package com.assassins.assassin.booking;
+package edu.sjsu.assasins.hotelbooking.booking;
 
-import com.assassins.assassin.models.Booking;
+import edu.sjsu.assasins.hotelbooking.models.Booking;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

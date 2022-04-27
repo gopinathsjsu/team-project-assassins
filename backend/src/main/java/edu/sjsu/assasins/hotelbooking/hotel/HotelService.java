@@ -1,6 +1,7 @@
-package com.assassins.assassin.hotel;
+package edu.sjsu.assasins.hotelbooking.hotel;
 
-import com.assassins.assassin.models.Hotel;
+
+import edu.sjsu.assasins.hotelbooking.models.Hotel;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

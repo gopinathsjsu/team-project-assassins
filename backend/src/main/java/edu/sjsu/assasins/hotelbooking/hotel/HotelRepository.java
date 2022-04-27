@@ -1,6 +1,6 @@
-package com.assassins.assassin.hotel;
+package edu.sjsu.assasins.hotelbooking.hotel;
 
-import com.assassins.assassin.models.Hotel;
+import edu.sjsu.assasins.hotelbooking.models.Hotel;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Service;
 

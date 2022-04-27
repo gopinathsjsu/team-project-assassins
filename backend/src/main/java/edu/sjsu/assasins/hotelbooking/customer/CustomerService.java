@@ -1,7 +1,7 @@
-package com.assassins.assassin.customer;
+package edu.sjsu.assasins.hotelbooking.customer;
 
-import com.assassins.assassin.models.Customer;
-import com.assassins.assassin.util.SHA512Hasher;
+import edu.sjsu.assasins.hotelbooking.models.Customer;
+import edu.sjsu.assasins.hotelbooking.util.SHA512Hasher;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

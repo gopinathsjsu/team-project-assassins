@@ -1,4 +1,4 @@
-package com.assassins.assassin.util;
+package edu.sjsu.assasins.hotelbooking.util;
 
 import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;

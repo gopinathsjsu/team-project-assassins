@@ -1,4 +1,4 @@
-package com.assassins.assassin.config;
+package edu.sjsu.assasins.hotelbooking.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

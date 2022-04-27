@@ -1,6 +1,7 @@
-package com.assassins.assassin.customer;
+package edu.sjsu.assasins.hotelbooking.customer;
 
-import com.assassins.assassin.models.Customer;
+
+import edu.sjsu.assasins.hotelbooking.models.Customer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

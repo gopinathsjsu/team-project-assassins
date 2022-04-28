@@ -16,11 +16,16 @@ dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
 	implementation 'org.springframework.boot:spring-boot-starter-web'
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
     implementation 'org.projectlombok:lombok:1.18.20'
 	implementation 'org.projectlombok:lombok:1.18.20'
 //	runtimeOnly 'org.postgresql:postgresql'
 //	implementation group: 'mysql', name: 'mysql-connector-java', version: '8.0.27'
 =======
+	implementation group: 'mysql', name: 'mysql-connector-java', version: '8.0.27'
+>>>>>>> Stashed changes
+=======
+	runtimeOnly 'org.postgresql:postgresql'
 	implementation group: 'mysql', name: 'mysql-connector-java', version: '8.0.27'
 >>>>>>> Stashed changes
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'

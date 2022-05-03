@@ -37,11 +37,11 @@ public class CustomerController {
         }
     }
 
-    @RequestMapping(value = "/login", method = RequestMethod.POST)
+    @RequestMapping(value = "/login", method = RequestMethod.GET)
     public ResponseEntity<String> loginCustomer(@RequestBody Customer customer) throws NoSuchAlgorithmException {
         try {
-            customerService.login(customer);
-            return ResponseEntity.status(HttpStatus.OK).body("success");
+            String email = customerService.login(customer);
+            return ResponseEntity.status(HttpStatus.OK).body(email);
         }
         catch (Exception e) {
             return ResponseEntity.status(HttpStatus.NO_CONTENT).body("invalid credentials");

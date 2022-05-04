@@ -1,4 +1,4 @@
-package edu.sjsu.assasins.hotelbooking.customer;
+package main.java.edu.sjsu.assasins.hotelbooking.customer;
 
 
 import edu.sjsu.assasins.hotelbooking.models.Customer;
@@ -38,10 +38,10 @@ public class CustomerController {
     }
 
     @RequestMapping(value = "/login", method = RequestMethod.GET)
-    public ResponseEntity<String> loginCustomer(@RequestBody Customer customer) throws NoSuchAlgorithmException {
+    public ResponseEntity<Object> loginCustomer(@RequestBody Customer customer) throws NoSuchAlgorithmException {
         try {
-            String email = customerService.login(customer);
-            return ResponseEntity.status(HttpStatus.OK).body(email);
+            Customer loggedincustomer = customerService.login(customer);
+            return ResponseEntity.status(HttpStatus.OK).body(loggedincustomer);
         }
         catch (Exception e) {
             return ResponseEntity.status(HttpStatus.NO_CONTENT).body("invalid credentials");

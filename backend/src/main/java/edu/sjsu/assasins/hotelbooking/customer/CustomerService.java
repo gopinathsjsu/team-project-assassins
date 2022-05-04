@@ -1,4 +1,4 @@
-package edu.sjsu.assasins.hotelbooking.customer;
+package main.java.edu.sjsu.assasins.hotelbooking.customer;
 
 import edu.sjsu.assasins.hotelbooking.models.Customer;
 import edu.sjsu.assasins.hotelbooking.util.SHA512Hasher;
@@ -10,7 +10,6 @@ import java.util.List;
 
 @Service
 public class CustomerService {
-
     @Autowired
     private CustomerRepository customerRepository;
     private final SHA512Hasher sha512Hasher = new SHA512Hasher();
@@ -21,7 +20,7 @@ public class CustomerService {
 
 
     public void register(Customer customer) throws NoSuchAlgorithmException {
-        List<Customer> customerByEmail =  customerRepository.findCustomerByEmail(customer.getEmail());
+        List<Customer> customerByEmail =  customerRepository.findByEmail(customer.getEmail());
         if(customerByEmail.size() != 0) throw new IllegalStateException("email taken");
         else {
             System.out.println(customer.getPassword());
@@ -30,16 +29,15 @@ public class CustomerService {
             customer.setPassword(securePassword);
             customerRepository.save(customer);
         }
-        
+
     }
 
-    public String login(Customer customer) {
-//        System.out.println(customer.getEmail() + customer.getName() + customer.getPassword());
-        List<Customer> customerByEmail =  customerRepository.findCustomerByEmail(customer.getEmail());
+    public Customer login(Customer customer) {
+        List<Customer> customerByEmail =  customerRepository.findByEmail(customer.getEmail());
         System.out.println(customerByEmail.size());
         if(customerByEmail.size() == 0) throw new IllegalStateException("email taken");
         else {
-            if(sha512Hasher.checkPassword(customerByEmail.get(0).getPassword(), customer.getPassword())) return customerByEmail.get(0).getEmail();
+            if(sha512Hasher.checkPassword(customerByEmail.get(0).getPassword(), customer.getPassword())) return customerByEmail.get(0);
             else throw new IllegalStateException("invalid password");
         }
     }

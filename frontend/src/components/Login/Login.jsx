@@ -1,92 +1,123 @@
-import backendServer from '../../webconfig';
-import React, { useState } from 'react';
-import { useHistory } from "react-router";
-import logo from "../../images/logo.png";
-import { Redirect } from 'react-router-dom';
-require("./Login.css")
+import React, { Component } from 'react';
+import axios from "axios";
+import Loader from "../../common-components/Loader";
+import Error from "../../common-components/Error";
+require('./Login.css')
 
-const Login = () => {
-  const history = useHistory();
-  const [errorMsg, setErrorMsg] = useState('');
-
-  const [{ emailId, password, signin }, setState] = useState(
-    {
-      emailId: "",
-      password: "",
-      signin: false
+class Login extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+        email: '',
+        password: '',
+        isLoading: false,
+        errorMessage: '',
+        successMessage: ''
     }
-  )
+}
+handelLogin = async () => {
+  this.setState({isLoading: true});
+  const {
+    email, password
+  } = this.state
+    const user = {
+      email,
+      password,
+    };
+    if (!email) {
+      this.setState({errorMessage: "Email is a required field"})
+    } else if (!password) {
+      this.setState({errorMessage: "Please enter the password"})
+    } else if (
+      !/^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{6,16}$/.test(password)
+    ) {
+      this.setState({ errorMessage : "Password need to be 6 to 16 character including at least one number , one letter and special character in it"});
+    } else if (
+      !email.match(
+        /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+      )
+    ) {
+      this.setState({ errorMessage: "Please use a valid email address!"});
+    } else {
+      console.log(user)
+      try {
+        const result = (
+          await axios.post("http://localhost:8080/api/customer/login", user)
+        ).data;
+        console.log("In post login");
+        console.log(result);
+        localStorage.setItem("currentUserName", JSON.stringify(result.name));
+        localStorage.setItem("currentUserId", JSON.stringify(result.id));
+        localStorage.setItem("isAdmin", JSON.stringify(result.admin));
+        localStorage.setItem("rewards", JSON.stringify(result.rewardPoints));
 
-  const handleEvent = (event) => {
-    setState(preState => ({ ...preState, [event.target.name]: event.target.value }))
-  }
-
-  const checkLogin = async (e) => {
-    e.preventDefault();
-    let res = await fetch(`${backendServer}/api/customer/login`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      mode: 'cors',
-      body: JSON.stringify({ email: emailId, password }),
-    })
-    let token = await res.text();
-    if (res.status === 200) {
-      sessionStorage.setItem('token', token);
-      history.replace('/');
+debugger;
+        window.location.href = "/admin";
+      } catch (error) {
+        console.log(error);
+        this.setState({errorMessage: "Invalid Credentials"})
+      }
+      this.setState({isLoading: false});
     }
-    else {
-      setErrorMsg('Please enter valid credentials');
-    }
-  }
-
-  return (
-    signin ? <div>
-      <Redirect to="/" />
-    </div> :
+}
+  render() {
+    const {
+      email, password, isLoading, errorMessage
+    } = this.state
+    return (
       <div>
-        <div className="container" style={{ width: '25%' }}>
-          <div style={{ textAlign: 'center', marginTop: '17%' }}>
+        {isLoading && <Loader></Loader>}
+        <div className="login-main"></div>
+        <div className="row justify-content-center mt-5" style={{ height: "30%", }}>
+          <div className="col-md-5 mt-5">
+            {errorMessage.length > 0 && <Error msg={errorMessage}></Error>}
+            <div
+              style={{
+                marginTop: "-100%",
+                marginLeft: "15%",
+                backgroundColor: "#478dc3",
+              }}
+              className="bs"
+            >
+              <h2>Login</h2>
 
-            <form onSubmit={checkLogin}>
-              <div ><img style={{ width: '85%' }} src={logo} alt="Etsy" /></div>
-              <div >
-                <div style={{ marginTop: '3%' }}>
-                  <h1 style={{ fontSize: 20 }}> Welcome to </h1>
-                  <h1 style={{ color: '#FF8C00' }}> Etsy </h1>
-                  <h3>Please login</h3>
-                </div>
-                <div className="form-group" style={{ marginTop: '5%' }}>
-                  <div style={{ textAlign: 'left', fontWeight: 'bolder', padding: '5px' }}><label>Email address : </label></div>
-                  <input data-testid = "emailId" onChange={handleEvent} name="emailId" value={emailId} className="form-control" id="email" aria-describedby="emailHelp" placeholder="Enter Email" autoFocus required={true} />
-                </div>
-                <div className="form-group" style={{ marginTop: '5%' }}>
-                  <div style={{ textAlign: 'left', fontWeight: 'bolder', padding: '5px' }}><label htmlFor="password">Password : </label></div>
-                  <input onChange={handleEvent} type="password" name="password" value={password} className="form-control" id="password" aria-describedby="nameHelp" placeholder="Enter Password" autoFocus required={true} />
-                </div>
-                <div className="text-danger">
-                  {errorMsg !== "" ? <h5>{errorMsg}</h5> : null}
-                </div>
-                <br />
-                <button type="submit" className="btn btn-success btn-lg btn-block" style={{ width: "350px" }}>Login</button>
-              </div>
-              <div style={{ textAlign: 'left', fontWeight: 'bolder', padding: '5px' }}>
-                Are you a new use?
-                <span>
-                  <a href='/signup'>
-                    click here to register
-                  </a>
-                </span>
-              </div>
+              <input
+                type="text"
+                className="form-control"
+                placeholder="email"
+                value={email}
+                onChange={(e) => {
+                  this.setState({email: e.target.value});
+                }}
+              />
+              <br></br>
 
-            </form>
+              <input
+                type="password"
+                className="form-control"
+                placeholder="password"
+                value={password}
+                onChange={(e) => {
+                  this.setState({password: e.target.value});
+                }}
+              />
+              {isLoading ? (
+                <div>Login...Please Wait...</div>
+              ) : (
+                <button
+                  style={{ border: "none", marginLeft: "41%" }}
+                  className="btn btn-primary mt-3"
+                  onClick={this.handelLogin}
+                >
+                  Login
+                </button>
+              )}
+            </div>
           </div>
         </div>
       </div>
-
-
-  );
+    );
+  }
 }
 
 export default Login;

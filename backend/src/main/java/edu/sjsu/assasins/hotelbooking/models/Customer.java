@@ -3,13 +3,32 @@ package edu.sjsu.assasins.hotelbooking.models;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import javax.persistence.Column;
+import javax.persistence.Entity;
 import javax.persistence.Id;
-import java.util.Date;
 
-@Document(collection ="customers")
+@Document(collection = "Customer")
 public class Customer{
     @Id
+    @Column(name = "id")
+    private String id;
     private String email;
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public boolean isAdmin() {
+        return isAdmin;
+    }
+
+    private String password;
+    private String name;
+    private boolean isAdmin;
+    private int rewardPoints;
 
     public void setEmail(String email) {
         this.email = email;
@@ -23,7 +42,7 @@ public class Customer{
         this.name = name;
     }
 
-    public void setAdmin(Boolean admin) {
+    public void setAdmin(boolean admin) {
         isAdmin = admin;
     }
 
@@ -43,16 +62,13 @@ public class Customer{
         return name;
     }
 
-    public Boolean getAdmin() {
+    public boolean getAdmin() {
         return isAdmin;
     }
 
     public int getRewardPoints() {
         return rewardPoints;
     }
-
-    private String password;
-    private String name;
 
     public Customer() {
     }
@@ -64,8 +80,4 @@ public class Customer{
         this.isAdmin = isAdmin;
         this.rewardPoints = rewardPoints;
     }
-
-    private Boolean isAdmin;
-    private int rewardPoints;
 }
-

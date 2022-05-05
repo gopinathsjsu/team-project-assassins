@@ -1,4 +1,4 @@
-package edu.sjsu.assasins.hotelbooking.exception;
+package main.java.edu.sjsu.assasins.hotelbooking.exception;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

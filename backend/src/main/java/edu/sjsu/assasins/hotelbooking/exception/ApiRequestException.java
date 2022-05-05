@@ -1,4 +1,4 @@
-package edu.sjsu.assasins.hotelbooking.exception;
+package main.java.edu.sjsu.assasins.hotelbooking.exception;
 
 public class ApiRequestException extends RuntimeException {
     public ApiRequestException(String message) {

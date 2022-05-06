@@ -1,9 +1,8 @@
-package edu.sjsu.assasins.hotelbooking.models;
+package main.java.edu.sjsu.assasins.hotelbooking.models;
 
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import javax.persistence.Column;
-import javax.persistence.Entity;
 import javax.persistence.Id;
 
 @Document(collection = "Customer")

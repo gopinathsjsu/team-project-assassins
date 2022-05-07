@@ -41,4 +41,8 @@ public class BookingService {
         return bookingRepository.findById(id);
     }
 
+    public List<Booking> findByUserId(String userId) throws NoSuchAlgorithmException {
+        return bookingRepository.findByUserId(userId);
+    }
+
 }

@@ -23,4 +23,15 @@ public class BookingController {
         this.bookingService = bookingService;
     }
 
+     @RequestMapping(value = "main" , method = RequestMethod.GET)
+    public ResponseEntity<Object> main(){
+        return ResponseEntity.ok().body(new ErrorMessage("The Booking application is up and running..."));
+    }
+
+    @RequestMapping(value = "/getallbookings", method = RequestMethod.GET)
+    public ResponseEntity<Object> getAllBookings() throws NoSuchAlgorithmException {
+        List<Booking> bookings = bookingService.findAll();
+        return ResponseEntity.ok().body(bookings);
+    }
+
 }

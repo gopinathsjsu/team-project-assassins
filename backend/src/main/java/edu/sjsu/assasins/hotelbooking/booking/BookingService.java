@@ -27,4 +27,18 @@ public class BookingService {
     @Autowired
     private BookingRepository bookingRepository;
 
+     @Autowired
+    private PriceRepository priceRepository;
+
+    @Autowired
+    private RoomRepository roomRepository;
+
+    public List<Booking> findAll() throws NoSuchAlgorithmException {
+        return bookingRepository.findAll();
+    }
+
+    public Optional<Booking> findById(String id) throws NoSuchAlgorithmException {
+        return bookingRepository.findById(id);
+    }
+
 }

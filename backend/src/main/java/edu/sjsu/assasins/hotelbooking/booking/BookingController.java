@@ -34,4 +34,10 @@ public class BookingController {
         return ResponseEntity.ok().body(bookings);
     }
 
+     @RequestMapping(value = "/getSpecificBooking/{id}", method = RequestMethod.GET)
+    public ResponseEntity<Object> getBookingById(@PathVariable String id) throws NoSuchAlgorithmException {
+        Optional<Booking> room = bookingService.findById(id);
+        return ResponseEntity.ok().body(room);
+    }
+
 }

@@ -15,7 +15,7 @@ class PeakPricePage extends Component {
     }
 
     getPeakPriceList = () => {
-        fetch('http://localhost:8080/api/price/getallpeakprices').then(res => res.json()).then(res => this.setState({ priceList: res }));
+        fetch('http://hotelmanagementlb-1491587862.us-east-2.elb.amazonaws.com/api/price/getallpeakprices').then(res => res.json()).then(res => this.setState({ priceList: res }));
     }
 
     componentDidMount() {

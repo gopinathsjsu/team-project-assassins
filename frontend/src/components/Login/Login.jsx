@@ -42,7 +42,7 @@ handelLogin = async () => {
       console.log(user)
       try {
         const result = (
-          await axios.post("http://localhost:8080/api/customer/login", user)
+          await axios.post("http://hotelmanagementlb-1491587862.us-east-2.elb.amazonaws.com/api/customer/login", user)
         ).data;
         console.log("In post login");
         console.log(result);

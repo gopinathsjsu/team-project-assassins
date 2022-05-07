@@ -66,7 +66,7 @@ class SignUp extends Component {
     } else {
       try {
         const result = (
-          await axios.post("http://localhost:8080/api/customer/register", user)
+          await axios.post("http://hotelmanagementlb-1491587862.us-east-2.elb.amazonaws.com/api/customer/register", user)
         ).data;
         console.log(result);
         this.setState({

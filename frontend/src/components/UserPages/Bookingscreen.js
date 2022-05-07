@@ -78,7 +78,7 @@ function Bookingscreen({ match }) {
         setError("");
         setLoading(true);
         const data = (
-          await axios.get("http://localhost:8080/api/room/getroombyid/"+match.params.roomid)
+          await axios.get("http://hotelmanagementlb-1491587862.us-east-2.elb.amazonaws.com/api/room/getroombyid/"+match.params.roomid)
         ).data;
         console.log(data);
         setRoom(data);
@@ -139,7 +139,7 @@ function Bookingscreen({ match }) {
 
 
     axios
-      .post("http://localhost:8080/api/bookings/getUpdatedPrice", bookingDetails)
+      .post("http://hotelmanagementlb-1491587862.us-east-2.elb.amazonaws.com/api/bookings/getUpdatedPrice", bookingDetails)
       .then((result) => {
         console.log(result);
         console.log(typeof ((guestCount - 2)*15))
@@ -172,7 +172,7 @@ console.log(newRoomCost)
           // console.log(JSON.parse(localStorage.getItem("currentUser")).rewards);
           // const result = axios
           //   .put(
-          //     "http://localhost:8080/api/users/updateUserRewards/" +
+          //     "http://hotelmanagementlb-1491587862.us-east-2.elb.amazonaws.com/api/users/updateUserRewards/" +
           //       JSON.parse(localStorage.getItem("currentUserId")),
           //     {
           //       rewardsPoints:
@@ -221,7 +221,7 @@ console.log(newRoomCost)
     try {
       setLoading(true);
       const result = await axios.post(
-        "http://localhost:8080/api/bookings/bookroom",
+        "http://hotelmanagementlb-1491587862.us-east-2.elb.amazonaws.com/api/bookings/bookroom",
         bookingDetails
       );
       setLoading(false);
@@ -235,7 +235,7 @@ console.log(newRoomCost)
           if (rewards === 0) {
             const result = axios
               .put(
-                "http://localhost:8080/api/users/updateUserRewards/" +
+                "http://hotelmanagementlb-1491587862.us-east-2.elb.amazonaws.com/api/users/updateUserRewards/" +
                   JSON.parse(localStorage.getItem("currentUserId")),
                 { rewardsPoints: 0 }
               )
@@ -272,7 +272,7 @@ console.log(newRoomCost)
     console.log(totalRooms);
     console.log(room._id);
     axios
-      .put("http://localhost:8080/api/rooms/updateRoom/" + room.id, {
+      .put("http://hotelmanagementlb-1491587862.us-east-2.elb.amazonaws.com/api/rooms/updateRoom/" + room.id, {
         totalRooms,
       })
       .then((result) => {

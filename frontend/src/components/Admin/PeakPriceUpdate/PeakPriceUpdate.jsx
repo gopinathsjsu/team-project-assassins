@@ -61,7 +61,7 @@ class RestaurantMenuUpdate extends Component {
             console.log(priceItem1);
 
             if (priceItem === undefined) {
-                fetch("http://localhost:8080/api/price/addprice", {
+                fetch("http://hotelmanagementlb-1491587862.us-east-2.elb.amazonaws.com/api/price/addprice", {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json'
@@ -76,7 +76,7 @@ class RestaurantMenuUpdate extends Component {
                     }
                 });
             } else {
-                fetch("http://localhost:8080/api/price/editDiscount/" + priceItem.id, {
+                fetch("http://hotelmanagementlb-1491587862.us-east-2.elb.amazonaws.com/api/price/editDiscount/" + priceItem.id, {
                     method: 'PUT',
                     headers: {
                         'Content-Type': 'application/json'
@@ -99,7 +99,7 @@ class RestaurantMenuUpdate extends Component {
     deleteItemFromMenu = () => {
         const { priceItem } = this.props;
         if (priceItem !== undefined) {
-            fetch("http://localhost:8080/api/price/deleteprice/" + priceItem.id, {
+            fetch("http://hotelmanagementlb-1491587862.us-east-2.elb.amazonaws.com/api/price/deleteprice/" + priceItem.id, {
                 method: 'delete'
             })
                 .then((res) => {

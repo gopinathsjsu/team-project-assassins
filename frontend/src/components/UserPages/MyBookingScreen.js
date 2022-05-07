@@ -19,7 +19,7 @@ function MyBookingScreen() {
     try {
       const data = (
         await axios.get(
-          "http://localhost:8080/api/bookings/getCustomerBookings/"+userId,
+          "http://hotelmanagementlb-1491587862.us-east-2.elb.amazonaws.com/api/bookings/getCustomerBookings/"+userId,
         )
       ).data;
       console.log(data)
@@ -40,7 +40,7 @@ function MyBookingScreen() {
     setLoading(true);
     try {
       const data = (
-        await axios.put("http://localhost:8080/api/bookings/cancelBooking/"+bookingid)
+        await axios.put("http://hotelmanagementlb-1491587862.us-east-2.elb.amazonaws.com/api/bookings/cancelBooking/"+bookingid)
       ).data;
       setLoading(false);
       Swal.fire(

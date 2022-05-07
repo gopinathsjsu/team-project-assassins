@@ -46,7 +46,7 @@ public class BookingController {
         return ResponseEntity.ok().body(bookings);
     }
 
-    @RequestMapping(value = "/getUpdatedPrice", method = RequestMethod.POST)
+     @RequestMapping(value = "/getUpdatedPrice", method = RequestMethod.POST)
     public ResponseEntity<Object> getUpdatedPrice(@RequestBody Booking booking) throws NoSuchAlgorithmException {
         var dynamicPriceResponse = bookingService.fetchUpdatedPrice(booking);
         return ResponseEntity.ok().body(dynamicPriceResponse);
@@ -58,15 +58,14 @@ public class BookingController {
         return new ResponseEntity("Booking completed successfully", HttpStatus.OK);
     }
 
+     @RequestMapping(value = "/cancelBooking/{bookingId}", method = RequestMethod.PUT)
+    public ResponseEntity<Object> cancelBooking(@PathVariable String bookingId) {
+        var response = bookingService.cancelBooking(bookingId);
+        return ResponseEntity.ok().body(response);
+    }
     @RequestMapping(value = "/editBooking/{bookingId}", method = RequestMethod.PUT)
     public ResponseEntity<Object> editBooking(@PathVariable String bookingId, @RequestBody Booking booking) {
         bookingService.editBooking(booking, bookingId);
         return new ResponseEntity("Booking updated successfully", HttpStatus.OK);
-    }
-
-    @RequestMapping(value = "/cancelBooking/{bookingId}", method = RequestMethod.PUT)
-    public ResponseEntity<Object> cancelBooking(@PathVariable String bookingId) {
-        var response = bookingService.cancelBooking(bookingId);
-        return ResponseEntity.ok().body(response);
     }
 }

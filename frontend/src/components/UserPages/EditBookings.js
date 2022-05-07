@@ -22,7 +22,7 @@ function EditBookings({ match }) {
 
   const getBookingDetails = () => {
     Axios.get(
-      "http://localhost:8080/api/bookings/getSpecificBooking/" + bookingId
+      "http://hotelmanagementlb-1491587862.us-east-2.elb.amazonaws.com/api/bookings/getSpecificBooking/" + bookingId
     ).then((result) => {
       setBookingDetails(result.data);
       setRoomId(result.data.roomid);
@@ -45,7 +45,7 @@ function EditBookings({ match }) {
       remainingAmount: remainingAmount,
     };
     //setTotalDays(totaldaysa);
-    Axios.put("http://localhost:8080/api/bookings/editBooking/" + bookingId, bookingDetails
+    Axios.put("http://hotelmanagementlb-1491587862.us-east-2.elb.amazonaws.com/api/bookings/editBooking/" + bookingId, bookingDetails
     // {
     //   fromDate: fromDate,
     //   toDate: toDate,

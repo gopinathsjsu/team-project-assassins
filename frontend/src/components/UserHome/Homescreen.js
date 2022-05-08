@@ -14,5 +14,21 @@ import Error from "../../common-components/Error";
 import AOS from "aos";
 import "aos/dist/aos.css"; // You can also use <link> for styles
 function Homescreen() {
+    const [loading, setLoading] = useState(true);
+    const [error, setError] = useState("");
+    const [rooms, setRooms] = useState([]);
+
+    const [fromDate, setFromDate] = useState();
+    const [toDate, setToDate] = useState();
+    const [duplicateRooms, setDuplicateRooms] = useState([]);
+    const [searchKey, setSearchKey] = useState("");
+    const [type, setType] = useState("all");
+    const [guestCount, setGuestCount] = useState(1);
+    const [roomCount, setRoomCount] = useState(1);
+
+return(
+    <>
+    </>
+)
 }
 export default Homescreen;

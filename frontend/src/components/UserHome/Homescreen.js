@@ -10,6 +10,15 @@ class Homescreen extends Component {
             rewards: ''
         }
     }
+
+    componentDidMount() {
+        let userName = JSON.parse(localStorage.getItem("currentUserName"));
+        let userId = JSON.parse(localStorage.getItem("currentUserId"));
+        let isAdmin = JSON.parse(localStorage.getItem("isAdmin"));
+        let rewards = JSON.parse(localStorage.getItem("rewards"));
+        this.setState({ userId, userName, isAdmin, rewards })
+    }
+
     render() {
         return (
             <div>

@@ -45,4 +45,23 @@ public class BookingService {
         return bookingRepository.findByUserId(userId);
     }
 
+    public static int getDayNumberOld(Date date) {
+        Calendar cal = Calendar.getInstance();
+        cal.setTime(date);
+        return cal.get(Calendar.DAY_OF_WEEK);
+    }
+
+    public static Date addDays(Date date, int days)
+    {
+        Calendar cal = Calendar.getInstance();
+        cal.setTime(date);
+        cal.add(Calendar.DATE, days); //minus number would decrement the days
+        return cal.getTime();
+    }
+
+    public static int dateDifference(Date fromDate, Date toDate)
+    {
+        return (int) ChronoUnit.DAYS.between((Temporal) fromDate, (Temporal) toDate);
+    }
+
 }

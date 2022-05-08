@@ -26,6 +26,26 @@ function Homescreen() {
     const [guestCount, setGuestCount] = useState(1);
     const [roomCount, setRoomCount] = useState(1);
 
+
+    function filterBySearch() {
+        const tempRooms = duplicateRooms.filter((x) =>
+            x.location.toLowerCase().includes(searchKey.toLowerCase())
+        );
+        console.log(tempRooms);
+        setRooms(tempRooms);
+    }
+    function filterByType(type) {
+        setType(type);
+        console.log(type);
+        if (type !== "all") {
+            const tempRooms = duplicateRooms.filter(
+                (x) => x.type.toLowerCase() === type.toLowerCase()
+            );
+            setRooms(tempRooms);
+        } else {
+            setRooms(duplicateRooms);
+        }
+    }
 return(
     <>
     </>

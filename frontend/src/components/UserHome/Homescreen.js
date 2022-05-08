@@ -25,6 +25,78 @@ function Homescreen() {
     const [type, setType] = useState("all");
     const [guestCount, setGuestCount] = useState(1);
     const [roomCount, setRoomCount] = useState(1);
+    useEffect(() => {
+        async function fetchMyAPI() {
+            try {
+                setError("");
+                setLoading(true);
+                const data = (
+                    await axios.get("http://localhost:8080/api/room/getallrooms")
+                ).data;
+                //console.log(data);
+                setRooms(data);
+                setDuplicateRooms(data);
+            } catch (error) {
+                console.log(error);
+                setError(error);
+            }
+            setLoading(false);
+        }
+
+        fetchMyAPI();
+    }, []);
+    function changeDates(dates) {
+        try {
+            setFromDate(moment(dates[0]).format("DD-MM-YYYY"));
+            setToDate(moment(dates[1]).format("DD-MM-YYYY"));
+        } catch (e) {
+            console.log(e);
+        }
+    }
+    function filterByDate(dates) {
+        try {
+            if (!dates) {
+                setFromDate(null);
+                setToDate(null);
+                return;
+            }
+            setFromDate(moment(dates[0]).format("DD-MM-YYYY"));
+            setToDate(moment(dates[1]).format("DD-MM-YYYY"));
+
+            var tempRooms = [];
+            for (const room of duplicateRooms) {
+                var availability = false;
+                if (room.currentbookings.length > 0) {
+                    for (const booking of room.currentbookings) {
+                        if (
+                            !moment(moment(dates[0]).format("DD-MM-YYYY")).isBetween(
+                                booking.fromdate,
+                                booking.todate
+                            ) &&
+                            !moment(moment(dates[1]).format("DD-MM-YYYY")).isBetween(
+                                booking.fromdate,
+                                booking.todate
+                            )
+                        ) {
+                            if (
+                                moment(dates[0]).format("DD-MM-YYYY") !== booking.fromdate &&
+                                moment(dates[0]).format("DD-MM-YYYY") !== booking.todate &&
+                                moment(dates[1]).format("DD-MM-YYYY") !== booking.fromdate &&
+                                moment(dates[1]).format("DD-MM-YYYY") !== booking.todate
+                            ) {
+                                availability = true;
+                            }
+                        }
+                    }
+                }
+                //
+                if (availability == true || room.currentbookings.length == 0) {
+                    tempRooms.push(room);
+                }
+            }
+            setRooms(tempRooms);
+        } catch (error) {}
+    }
 
 
     function filterBySearch() {

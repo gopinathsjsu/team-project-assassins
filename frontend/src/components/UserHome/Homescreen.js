@@ -118,9 +118,115 @@ function Homescreen() {
             setRooms(duplicateRooms);
         }
     }
-return(
-    <>
-    </>
-)
+
+    return (
+        <>
+            <div style={{backgroundColor: "grey"}}>
+                <div className="container" style={{zIndex:"11"}}>
+                    <div className="row mt-5 bs">
+                        <div className="col-md-3">
+                            <p>FROM - TO</p>
+                            <RangePicker
+                                format="DD-MM-YYYY"
+                                onCalendarChange={changeDates}
+                                onChange={filterByDate}
+                                disabledDate={(current) =>
+                                    fromDate
+                                        ? current > moment(fromDate, "DD-MM-YYYY").add(7, "day")
+                                        : null
+                                }
+                            />
+                        </div>
+
+                        <div className="col-md-2">
+                            <p>Room Type</p>
+
+                            <select
+                                className="form-control"
+                                value={type}
+                                onChange={(e) => {
+                                    filterByType(e.target.value);
+                                }}
+                            >
+                                <option value="all">All</option>
+                                <option value="double">Double rooms</option>
+                                <option value="suites">Suites</option>
+                                <option value="single-room">Single Room</option>
+                            </select>
+                        </div>
+
+                        <div className="col-md-2">
+                            <p>Guest Count</p>
+
+                            <select
+                                className="form-control"
+                                value={guestCount}
+                                placeholder="guest count"
+                                onChange={(e) => {
+                                    setGuestCount(e.target.value);
+                                }}
+                            >
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                                <option value="6">6</option>
+                            </select>
+                        </div>
+
+                        <div className="col-md-2">
+                            <p>Room Count</p>
+
+                            <select
+                                className="form-control"
+                                value={roomCount}
+                                placeholder="guest count"
+                                onChange={(e) => {
+                                    setRoomCount(e.target.value);
+                                }}
+                            >
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                                <option value="6">6</option>
+                            </select>
+                        </div>
+
+                        <div className="col-md-3">
+                            <p>Location</p>
+                            <input
+                                type="text"
+                                className="form-control"
+                                placeholder="search rooms"
+                                value={searchKey}
+                                onChange={(e) => {
+                                    setSearchKey(e.target.value);
+                                }}
+                                onKeyUp={filterBySearch}
+                            />
+                        </div>
+                    </div>
+
+
+                </div>
+                {/* <Container> */}
+                <div>
+                    <br/><br/>
+                    {rooms.length > 0 ? (<div className="dish-cards">
+                        {/* <Row lg={2} sm={1}> */}
+                        <Room rooms={rooms}
+                              fromDate={fromDate}
+                              toDate={toDate}
+                              guestCount={guestCount}
+                              roomCount={roomCount} />
+                        {/* </Row> */}
+                    </div>) : ''}
+            </div>
+        </>
+    );
+}
 }
 export default Homescreen;

@@ -46,5 +46,9 @@ public class BookingController {
         return ResponseEntity.ok().body(bookings);
     }
 
-
+    @RequestMapping(value = "/getUpdatedPrice", method = RequestMethod.POST)
+    public ResponseEntity<Object> getUpdatedPrice(@RequestBody Booking booking) throws NoSuchAlgorithmException {
+        var dynamicPriceResponse = bookingService.fetchUpdatedPrice(booking);
+        return ResponseEntity.ok().body(dynamicPriceResponse);
+    }
 }

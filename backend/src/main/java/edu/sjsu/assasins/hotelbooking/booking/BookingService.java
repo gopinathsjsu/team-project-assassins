@@ -59,9 +59,14 @@ public class BookingService {
         return cal.getTime();
     }
 
-    public static int dateDifference(Date fromDate, Date toDate)
-    {
-        return (int) ChronoUnit.DAYS.between((Temporal) fromDate, (Temporal) toDate);
+    public static int dateDifference(Date fromDate, Date toDate) throws ParseException {
+        SimpleDateFormat sdf = new SimpleDateFormat("MM/dd/yyyy", Locale.ENGLISH);
+//        Date firstDate = sdf.parse(String.valueOf(fromDate));
+//        Date secondDate = sdf.parse(String.valueOf(toDate));
+
+        long diffInMillies = Math.abs(toDate.getTime() - fromDate.getTime());
+        long diff = TimeUnit.DAYS.convert(diffInMillies, TimeUnit.MILLISECONDS);
+        return (int) diff;
     }
 
 }

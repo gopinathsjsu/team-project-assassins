@@ -1,31 +1,18 @@
-import React, {Component} from 'react';
+import React, { useState, useEffect } from "react";
+import axios from "axios";
+import "antd/dist/antd.css";
+import { DatePicker, Space } from "antd";
+import {
+    Col, Container, Ratio, Row, Navbar, Nav, NavDropdown, Button, Modal
+} from 'react-bootstrap';
+import moment from "moment";
 
-class Homescreen extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            userName: '',
-            userId: '',
-            isAdmin: '',
-            rewards: ''
-        }
-    }
+import Room from "../../common-components/Room";
+import Loader from "../../common-components/Loader";
+import Error from "../../common-components/Error";
 
-    componentDidMount() {
-        let userName = JSON.parse(localStorage.getItem("currentUserName"));
-        let userId = JSON.parse(localStorage.getItem("currentUserId"));
-        let isAdmin = JSON.parse(localStorage.getItem("isAdmin"));
-        let rewards = JSON.parse(localStorage.getItem("rewards"));
-        this.setState({ userId, userName, isAdmin, rewards })
-    }
-
-    render() {
-        return (
-            <div>
-                
-            </div>
-        );
-    }
+import AOS from "aos";
+import "aos/dist/aos.css"; // You can also use <link> for styles
+function Homescreen() {
 }
-
 export default Homescreen;

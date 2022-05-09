@@ -161,10 +161,40 @@ public class BookingService {
             response.put("totalAmount", String.valueOf(totalPrice));
             response.put("offerapplied", offerApplied);
             response.put("extracostapplied", dynamicPriceReason);
-            
+
             return ResponseEntity.ok(response);
         } catch (Exception e) {
             throw e;
+        }
+    }
+
+    public ResponseEntity<Object> editBooking(Booking booking, String bookingId) throws ParseException {
+        if (bookingRepository.existsById(bookingId)) {
+            try {
+                Booking bookingToBeUpdated = bookingRepository.findById(bookingId).get();
+                Date fromDate = booking.getFromdate();
+                Date toDate = booking.getTodate();
+
+                int totalDays = booking.getTotaldays();
+                int totalAmount = booking.getTotalamount();
+                int perDay = booking.getRemainingAmount();
+                int daysDiff = dateDifference(fromDate, toDate);
+                int remaining = (daysDiff - totalDays)*perDay;
+                int updatedTotalAmount = totalAmount + remaining;
+
+                bookingToBeUpdated.setFromdate(fromDate);
+                bookingToBeUpdated.setTodate(toDate);
+                bookingToBeUpdated.setTotaldays(daysDiff);
+                bookingToBeUpdated.setTotalamount(updatedTotalAmount);
+
+                bookingRepository.save(bookingToBeUpdated);
+                return ResponseEntity.ok(bookingToBeUpdated);
+            } catch (Exception e) {
+                throw e;
+            }
+        }
+        else {
+            return ResponseEntity.badRequest().body(new ErrorMessage("updating price failed."));
         }
     }
 

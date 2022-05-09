@@ -51,4 +51,6 @@ public class BookingController {
         var dynamicPriceResponse = bookingService.fetchUpdatedPrice(booking);
         return ResponseEntity.ok().body(dynamicPriceResponse);
     }
+
+    
 }

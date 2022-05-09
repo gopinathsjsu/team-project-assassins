@@ -110,4 +110,50 @@ public class BookingService {
         }
     }
 
+
+    @Transactional
+    public ResponseEntity<HashMap<String, String>> fetchUpdatedPrice(Booking booking)
+    {
+        try {
+            HashMap<String,String> response = new HashMap<>();
+            int totalPrice = booking.getTotalamount();
+            Date bookingFromDate = booking.getFromdate();
+            bookingFromDate = addDays(bookingFromDate, 1);
+            List<Price> dynamicPrices = priceRepository.findAll();
+            String dynamicPriceReason = "";
+            Room room = booking.getRoom();
+
+            if(getDayNumberOld(bookingFromDate) == 1 || getDayNumberOld(bookingFromDate) == 7)
+            {
+                totalPrice += (totalPrice * room.getPercentHikePerDayOnWeekend())/100;
+                dynamicPriceReason += "Weekend Peak Price Hike";
+            }
+            else
+            {
+                for(Price p : dynamicPrices)
+                {
+                    Date x = p.getFromdate();
+                    Date y = p.getTodate();
+                    if(bookingFromDate.after(x) && bookingFromDate.before(y)) {
+                        totalPrice += (totalPrice * room.getPercentHikePerDayOnWeekend())/100;
+                        dynamicPriceReason += "Holiday Peak Price";
+                        break;
+                    }
+                }
+            }
+
+            int guestsCount = booking.getGuestscount();
+            if (guestsCount > room.getFreeGuestCount()) {
+                int extraGuests = guestsCount - room.getFreeGuestCount();
+                totalPrice += extraGuests * booking.getTotaldays() * room.getRentPerExtraGuestPerDay();
+                dynamicPriceReason +=  " " + extraGuests + " extra guests added";
+            }
+
+           
+            return ResponseEntity.ok(response);
+        } catch (Exception e) {
+            throw e;
+        }
+    }
+
 }

@@ -57,4 +57,24 @@ public class BookingController {
         bookingService.editBooking(booking, bookingId);
         return new ResponseEntity("Booking updated successfully", HttpStatus.OK);
     }
+
+    public ResponseEntity<Object> cancelBooking(String bookingId)
+    {
+        if(bookingRepository.existsById(bookingId)){
+            try {
+                Booking bookingToBeUpdated = bookingRepository.findById(bookingId).get();
+                bookingToBeUpdated.setStatus("cancelled");
+                bookingRepository.save(bookingToBeUpdated);
+                logger.info("Booking record updated: " + bookingId);
+                return ResponseEntity.ok(bookingToBeUpdated);
+            } catch (Exception e) {
+                throw e;
+            }
+        }
+        else {
+            logger.error("Booking record does not exists.");
+            return ResponseEntity.badRequest().body(new ErrorMessage("Booking record does not exists."));
+        }
+    }
+
 }

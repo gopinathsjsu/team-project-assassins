@@ -69,4 +69,45 @@ public class BookingService {
         return (int) diff;
     }
 
+    @Transactional
+    public ResponseEntity<Object> saveOrUpdateBooking(Booking booking) {
+        try{
+            bookingRepository.save(booking);
+            var roomId = booking.getRoom().getId();
+            Room roomToBeUpdated = roomRepository.findById(roomId);
+            var currentBookings = roomToBeUpdated.getCurrentBookings();
+            var newBooking = new Booking();
+            newBooking.setId(booking.getId().toString());
+            newBooking.setFromdate(booking.getFromdate());
+            newBooking.setTodate(booking.getTodate());
+            newBooking.setUserid(booking.getUserid());
+            newBooking.setStatus(booking.getStatus());
+            List<Booking> bookings;
+
+            if(currentBookings == null)
+            {
+                bookings = new ArrayList<>();
+                bookings.add(newBooking);
+                roomToBeUpdated.setCurrentBookings(bookings);
+            }
+            else{
+                currentBookings.add(newBooking);
+                roomToBeUpdated.setCurrentBookings(currentBookings);
+            }
+
+            roomRepository.save(roomToBeUpdated);
+
+            String userId = booking.getUserid();
+            Customer updatedCustomer = customerRepository.findById(userId).get();
+            int rewards = updatedCustomer.getRewardPoints();
+            updatedCustomer.setRewardPoints(rewards + 20);
+            customerRepository.save(updatedCustomer);
+
+            return ResponseEntity.ok(booking);
+        }
+        catch (Exception e) {
+            throw e;
+        }
+    }
+
 }

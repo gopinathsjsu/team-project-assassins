@@ -52,5 +52,9 @@ public class BookingController {
         return ResponseEntity.ok().body(dynamicPriceResponse);
     }
 
-    
+    @RequestMapping(value = "/editBooking/{bookingId}", method = RequestMethod.PUT)
+    public ResponseEntity<Object> editBooking(@PathVariable String bookingId, @RequestBody Booking booking) throws ParseException {
+        bookingService.editBooking(booking, bookingId);
+        return new ResponseEntity("Booking updated successfully", HttpStatus.OK);
+    }
 }

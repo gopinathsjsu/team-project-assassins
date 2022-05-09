@@ -149,7 +149,19 @@ public class BookingService {
                 dynamicPriceReason +=  " " + extraGuests + " extra guests added";
             }
 
-           
+            //Loyalty discount
+            List<Booking> previousBooking = bookingRepository.getBookingsByUserIdAndRoomId(booking.getUserid(), room.getId());
+            String offerApplied = "";
+            if(previousBooking.size() > 0)
+            {
+                totalPrice -= totalPrice/20;
+                offerApplied = "Customer Loyality discount (5%)";
+            }
+
+            response.put("totalAmount", String.valueOf(totalPrice));
+            response.put("offerapplied", offerApplied);
+            response.put("extracostapplied", dynamicPriceReason);
+            
             return ResponseEntity.ok(response);
         } catch (Exception e) {
             throw e;

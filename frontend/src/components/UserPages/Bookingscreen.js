@@ -32,3 +32,30 @@ useEffect(() => {
     }
     setLoading(false);
   }
+  fetchMyAPI();
+}, []);
+
+useEffect(() => {
+  const totaldays = moment.duration(todate.diff(fromdate)).asDays() + 1;
+  console.log("totalDays", totalDays);
+  setTotalDays(totaldays);
+  const roomrent = totalDays * room.rentPerDay;
+  setTotalAmount(roomrent);
+}, [room]);
+
+const handleUseReedem = () => {
+  console.log(useRewards);
+  setDisplay(false);
+  setUseRewards(!useRewards);
+  const rewards = JSON.parse(localStorage.getItem("rewards"));
+  console.log(useRewards);
+  if (useRewards === true) {
+    const updatedCostAfterRewards = totalAmount - rewards;
+    setTotalAmount(updatedCostAfterRewards);
+    setRewards(0);
+  } else {
+    setRewards(rewards);
+    const updatedCostAfterRewards = totalAmount + rewards;
+    setTotalAmount(updatedCostAfterRewards);
+  }
+};

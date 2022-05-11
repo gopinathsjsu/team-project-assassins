@@ -59,7 +59,7 @@ Git
 
 ## Deployment Diagram
 
-![deployment](https://user-images.githubusercontent.com/95255376/168460281-daae9a0b-dc13-493e-83ae-9dffbf67b455.jpeg)
+![deployment](https://user-images.githubusercontent.com/59953902/168516421-1b435494-682d-4e33-8bf8-ef0001981a17.jpeg)
 
 # Design Decisions:
 

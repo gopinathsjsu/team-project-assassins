@@ -31,7 +31,7 @@ function Homescreen() {
                 setError("");
                 setLoading(true);
                 const data = (
-                    await axios.get("http://localhost:8080/api/room/getallrooms")
+                    await axios.get("http://hotelmanagementlb-1491587862.us-east-2.elb.amazonaws.com/api/room/getallrooms")
                 ).data;
                 //console.log(data);
                 setRooms(data);

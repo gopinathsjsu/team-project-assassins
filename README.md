@@ -4,8 +4,6 @@
 
 [Link to Sprint Journal](https://docs.google.com/spreadsheets/d/16BqCZ0bVYJwDssp8gsMDdGqSLah9oz8eij3ZgOSaOZg/edit#gid=1832506498)
 
-[Deployed Application link]()
-
 (Note: All the abobe links will be opened only with SJSU mailid)
 
 ## Members of the team
@@ -34,16 +32,25 @@ Deployment AWS EC2 with load balancing <br/>
 
 ## IDE
 
-IntellIj
+IntelliJ IDEA, VS Code
 
 ## Version control
 Git
 
 ### XP Values <br/>
 
-- Respect <br/>
-- Feedback <br/>
-  We implemented Respect and Feedback XP values through out our project. We as a team are always open to feedback from other teammates. We gave respect to other team mates time to be spent on weeks targets depending on their workloads.
+### Respect <br/>
+
+1. During the development phase we pushed our changes to our particular branch and created pull requests. Once the code was approved by another team member, we pushed the changes to the master branch.
+2. We made sure the code changes on the master branch was always stable and did not break the other team member’s code.
+3. We tested code thoroughly and did not perpetrate mistakes that might break compilation, that fails integration tests or hampers the work of peers.
+
+### Feedback <br/>
+
+1. Continuous feedback helped us in aligning our goals and responsibilities.
+2. Constructive feedback gave us a healthy environment for interaction and conveying our thoughts more transparently.
+3. By giving and receiving regular feedbacks, adapted to the changes and avoid recurring mistakes.
+4. This motivated us to perform more efficiently.
 
 ## Use Case Diagram
 

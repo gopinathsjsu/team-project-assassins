@@ -37,6 +37,8 @@
 ## Sprint 7
 
             What task did I work on/complete?	Completed Architecture, Usecase, Deployment and component diagrams,
+         Created getallbookings api, getSpecificBooking api, getCustomerBookings api, bookroom api, getUpdatedPrice api depending on dynamic pricing, 
+         editBooking and cancelBooking api's
     	What am I planning to do to next?	Fix if any bugs/ issues/styling
     	What tasks are blocked waiting on another team member?	None
 

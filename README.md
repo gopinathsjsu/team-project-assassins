@@ -1,6 +1,6 @@
 # Hotel Management Application by Team Assassins
 
-## Team
+## Team members
 
 Rama Mohan Suryadevara - (015722005) <br/>
 Harshavardhan Padidala - (015219945) <br/>
@@ -14,17 +14,23 @@ Jayanth Reddy Sheri - (015242565) <br/>
 [Sprint Report](https://github.com/gopinathsjsu/team-project-assassins/blob/main/documentation/SpirntReport.xlsx) <br/>
 [Sprint Journal](https://github.com/gopinathsjsu/team-project-assassins/blob/main/documentation/SprintJournal.xlsx) <br/>
 
+### Sprint Excel Links
+[Link to Sprint Report](https://docs.google.com/spreadsheets/d/1fCNFw4r6vng_GiqHd8Cmij45HCGPqZhsmS_fnbjpCa4/edit#gid=0)
+
+[Link to Sprint Journal](https://docs.google.com/spreadsheets/d/16BqCZ0bVYJwDssp8gsMDdGqSLah9oz8eij3ZgOSaOZg/edit#gid=1832506498)
+
+(Note: Above 2 links will be opened only with SJSU mailid)
+
 ### Individual Sprint Journals <br/>
 [Individual Journal_RamaMohanSuryaDevara](https://github.com/gopinathsjsu/team-project-assassins/blob/main/documentation/RamaMohanSuryadevara_journal.md) <br/>
 [Individual Journal_HarshavardhanPadidala](https://github.com/gopinathsjsu/team-project-assassins/blob/main/documentation/Harshavardhan%20Padidala_journal.md) <br/>
 [Individual Journal_AravindThonupunuri](https://github.com/gopinathsjsu/team-project-assassins/blob/main/documentation/AravindThonupunuri_journal.md) <br/>
 [Individual Journal_JayanthReddySheri](https://github.com/gopinathsjsu/team-project-assassins/blob/main/documentation/JayanthReddySheri_journal.md) <br/>
 
-[Link to Sprint Report](https://docs.google.com/spreadsheets/d/1fCNFw4r6vng_GiqHd8Cmij45HCGPqZhsmS_fnbjpCa4/edit#gid=0)
+### Project Board
 
-[Link to Sprint Journal](https://docs.google.com/spreadsheets/d/16BqCZ0bVYJwDssp8gsMDdGqSLah9oz8eij3ZgOSaOZg/edit#gid=1832506498)
+[Project Board](https://github.com/orgs/gopinathsjsu/projects/14)
 
-(Note: All the abobe links will be opened only with SJSU mailid)
 
 ## Contributions
 
@@ -120,15 +126,15 @@ Why MongoDB ?
 
 # Feature Set
 
-## Employee:
+## Admin:
 
-- Will be able to adjust Peak price season
-- Will be able to view bookings
+- Will be able to add new Peak price and set duration of season, edit Peak Price, delete Peak Price
+- Will be able to view Hotels available.
 - Will be able to view users.
 
 ## Customer:
 
-- can login to the application
+- Login to the application
 - New customers can register to our application
 - Will be able to check available rooms for selected period of time
 - Will be able to search for hotels in a particular location

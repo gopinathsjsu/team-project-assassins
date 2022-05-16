@@ -1,17 +1,30 @@
 # Hotel Management Application by Team Assassins
 
-[Link to Sprint Report](https://docs.google.com/spreadsheets/d/1fCNFw4r6vng_GiqHd8Cmij45HCGPqZhsmS_fnbjpCa4/edit#gid=0)
-
-[Link to Sprint Journal](https://docs.google.com/spreadsheets/d/16BqCZ0bVYJwDssp8gsMDdGqSLah9oz8eij3ZgOSaOZg/edit#gid=1832506498)
-
-(Note: All the abobe links will be opened only with SJSU mailid)
-
-## Members of the team
+## Team
 
 Rama Mohan Suryadevara - (015722005) <br/>
 Harshavardhan Padidala - (015219945) <br/>
 Aravind Thonupunuri - (015922231) <br/>
 Jayanth Reddy Sheri - (015242565) <br/>
+
+## Documentation Links
+
+### Sprint Documents <br/>
+
+[Sprint Report](https://github.com/gopinathsjsu/team-project-assassins/blob/main/documentation/SpirntReport.xlsx) <br/>
+[Sprint Journal](https://github.com/gopinathsjsu/team-project-assassins/blob/main/documentation/SprintJournal.xlsx) <br/>
+
+### Individual Sprint Journals <br/>
+[Individual Journal_RamaMohanSuryaDevara](https://github.com/gopinathsjsu/team-project-assassins/blob/main/documentation/RamaMohanSuryadevara_journal.md) <br/>
+[Individual Journal_HarshavardhanPadidala](https://github.com/gopinathsjsu/team-project-assassins/blob/main/documentation/Harshvardhan%20Padidala_journal.md) <br/>
+[Individual Journal_AravindThonupunuri](https://github.com/gopinathsjsu/team-project-assassins/blob/main/documentation/AravindThonupunuri_journal.md) <br/>
+[Individual Journal_JayanthReddySheri](https://github.com/gopinathsjsu/team-project-assassins/blob/main/documentation/JayanthReddySheri_journal.md) <br/>
+
+[Link to Sprint Report](https://docs.google.com/spreadsheets/d/1fCNFw4r6vng_GiqHd8Cmij45HCGPqZhsmS_fnbjpCa4/edit#gid=0)
+
+[Link to Sprint Journal](https://docs.google.com/spreadsheets/d/16BqCZ0bVYJwDssp8gsMDdGqSLah9oz8eij3ZgOSaOZg/edit#gid=1832506498)
+
+(Note: All the abobe links will be opened only with SJSU mailid)
 
 ## Contributions
 

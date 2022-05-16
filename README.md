@@ -11,10 +11,6 @@ Jayanth Reddy Sheri - (015242565) <br/>
 
 ### Sprint Documents <br/>
 
-[Sprint Report](https://github.com/gopinathsjsu/team-project-assassins/blob/main/documentation/SpirntReport.xlsx) <br/>
-[Sprint Journal](https://github.com/gopinathsjsu/team-project-assassins/blob/main/documentation/SprintJournal.xlsx) <br/>
-
-### Sprint Excel Links
 [Link to Sprint Report](https://docs.google.com/spreadsheets/d/1fCNFw4r6vng_GiqHd8Cmij45HCGPqZhsmS_fnbjpCa4/edit#gid=0)
 
 [Link to Sprint Journal](https://docs.google.com/spreadsheets/d/16BqCZ0bVYJwDssp8gsMDdGqSLah9oz8eij3ZgOSaOZg/edit#gid=1832506498)

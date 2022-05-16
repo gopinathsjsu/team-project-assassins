@@ -16,7 +16,7 @@ Jayanth Reddy Sheri - (015242565) <br/>
 
 ### Individual Sprint Journals <br/>
 [Individual Journal_RamaMohanSuryaDevara](https://github.com/gopinathsjsu/team-project-assassins/blob/main/documentation/RamaMohanSuryadevara_journal.md) <br/>
-[Individual Journal_HarshavardhanPadidala](https://github.com/gopinathsjsu/team-project-assassins/blob/main/documentation/Harshvardhan%20Padidala_journal.md) <br/>
+[Individual Journal_HarshavardhanPadidala](https://github.com/gopinathsjsu/team-project-assassins/blob/main/documentation/Harshavardhan%20Padidala_journal.md) <br/>
 [Individual Journal_AravindThonupunuri](https://github.com/gopinathsjsu/team-project-assassins/blob/main/documentation/AravindThonupunuri_journal.md) <br/>
 [Individual Journal_JayanthReddySheri](https://github.com/gopinathsjsu/team-project-assassins/blob/main/documentation/JayanthReddySheri_journal.md) <br/>
 
